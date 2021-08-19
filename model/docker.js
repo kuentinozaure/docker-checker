@@ -7,22 +7,25 @@ class Docker {
   constructor() {}
 
   /**
-   * This method can find all container 
+   * This method return the list of the container
+   * @returns the list of the container
    */
    findAllContainer() {
     return getDockerContainer(execSync(DOCKER_COMMAND.PS_A, { encoding: "utf8" }));
   }
 
   /**
-   * This method remove a docker container
-   * @param {*} containerId id of the docker container
+   * Remove a docker container
+   * @param {*} containerId  is the container id
+   * @returns a container id delete
    */
    removeDockerContainer(containerId) {
     return execSync( `${DOCKER_COMMAND.REMOVE} ${containerId}`,{ encoding: "utf8" })
   }
 
   /**
-   * This method can remove all docker container 
+   * remove all container docker
+   * @returns all docker container deleted
    */
    removeAllDockerContainer() {
     return execSync(DOCKER_COMMAND.REMOVE_ALL)
