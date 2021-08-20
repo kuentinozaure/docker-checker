@@ -7,6 +7,11 @@ dockerRoutes.get("/docker", function (req, res) {
   res.send(Docker.findAllContainer());
 });
 
+dockerRoutes.put("/docker/:id", function (req, res) {
+  const { id } = req.params;
+  res.send(Docker.stopContainer(id));
+});
+
 dockerRoutes.delete("/docker/:id", function (req, res) {
   const { id } = req.params;
   res.send(Docker.removeDockerContainer(id));

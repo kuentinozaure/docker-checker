@@ -18,6 +18,17 @@ export default class Docker {
   }
 
   /**
+   * This method stop a container
+   * @param {*} containerId is the container id
+   * @returns the id of stoped container
+   */
+  static stopContainer(containerId) {
+    return getDockerContainer(
+      execSync(`${DOCKER_COMMAND.STOP} ${containerId}`, { encoding: "utf8" })
+    ); 
+  }
+
+  /**
    * Remove a docker container
    * @param {*} containerId  is the container id
    * @returns a container id delete
