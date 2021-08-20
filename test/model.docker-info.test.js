@@ -1,5 +1,5 @@
-const assert = require("assert");
-const DockerInfo = require("../model/docker-info");
+import * as assert from 'assert';
+import DockerInfo from '../model/docker-info';
 
 describe("docker model docker info test", () => {
   let dockerInfo = new DockerInfo(

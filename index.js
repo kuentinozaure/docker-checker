@@ -1,11 +1,5 @@
-import express from "express";
+import Docker from './model/docker'
 
-const app = express();
+let docker = new Docker();
 
-app.get("/", (req, res, next) => {
-  res.json({ message: "from index api" });
-});
-
-app.listen(8080, () => {
-  console.log(`Server is running`);
-});
+console.log(docker.findAllContainer())
