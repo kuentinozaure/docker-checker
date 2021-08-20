@@ -1,11 +1,5 @@
-
-const   Docker  = require("./model/docker");
-
+import Docker from './model/docker'
 
 let docker = new Docker();
 
-let elem ;
-
-elem = docker.removeAllDockerContainer()
-
-console.log(elem)
+console.log(docker.findAllContainer())

@@ -1,4 +1,3 @@
-
 class DockerInfo {
 
     constructor(id,status,image,created,dockerName) {
@@ -49,4 +48,4 @@ class DockerInfo {
     }
 }
 
-module.exports = DockerInfo;
+export default DockerInfo

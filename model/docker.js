@@ -1,17 +1,16 @@
-const { DOCKER_COMMAND } = require("./docker-command-enum");
-const {execSync} = require("child_process");
-const { getDockerContainer } = require("../util/tool");
+import DOCKER_COMMAND from "./docker-command-enum";
+import {execSync} from "child_process";
+import getDockerContainer from "../util/tool";
 
-class Docker {
-
-  constructor() {}
-
+export default class Docker {
   /**
    * This method return the list of the container
    * @returns the list of the container
    */
-   findAllContainer() {
-    return getDockerContainer(execSync(DOCKER_COMMAND.PS_A, { encoding: "utf8" }));
+  findAllContainer() {
+    return getDockerContainer(
+      execSync(DOCKER_COMMAND.PS_A, { encoding: "utf8" })
+    );
   }
 
   /**
@@ -19,8 +18,10 @@ class Docker {
    * @param {*} containerId  is the container id
    * @returns a container id delete
    */
-   removeDockerContainer(containerId) {
-    return execSync( `${DOCKER_COMMAND.REMOVE} ${containerId}`,{ encoding: "utf8" })
+  removeDockerContainer(containerId) {
+    return execSync(`${DOCKER_COMMAND.REMOVE} ${containerId}`, {
+      encoding: "utf8",
+    });
   }
 
   /**
@@ -28,9 +29,9 @@ class Docker {
    * @returns all docker container deleted
    */
    removeAllDockerContainer() {
-    return execSync(DOCKER_COMMAND.REMOVE_ALL)
+    return execSync(DOCKER_COMMAND.REMOVE_ALL, {
+      encoding: "utf8",
+    });
   }
+  
 }
-
-
-module.exports = Docker;

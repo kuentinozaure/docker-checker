@@ -1,5 +1,5 @@
-const assert = require("assert");
-const { getDockerContainer } = require("../util/tool");
+import * as assert from 'assert';
+import getDockerContainer from '../util/tool';
 
 describe("docker util tool test", () => {
   let docker_cli_result = `CONTAINER ID   IMAGE         COMMAND    CREATED          STATUS                      PORTS     NAMES
