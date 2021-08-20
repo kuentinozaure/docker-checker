@@ -1,11 +1,11 @@
+import express from "express";
 
-const   Docker  = require("./model/docker");
+const app = express();
 
+app.get("/", (req, res, next) => {
+  res.json({ message: "from index api" });
+});
 
-let docker = new Docker();
-
-let elem ;
-
-elem = docker.removeAllDockerContainer()
-
-console.log(elem)
+app.listen(8080, () => {
+  console.log(`Server is running`);
+});
