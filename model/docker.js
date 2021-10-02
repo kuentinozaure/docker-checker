@@ -1,6 +1,6 @@
 import DOCKER_COMMAND from "./docker-command-enum";
 import {execSync} from "child_process";
-import getDockerContainer from "../util/tool";
+import {getDockerContainer, getImageDocker} from "../util/tool";
 
 export default class Docker {
 
@@ -17,6 +17,12 @@ export default class Docker {
     );
   }
 
+  static findAllImage() {
+    return getImageDocker(
+      execSync(DOCKER_COMMAND.GET_ALL_IMAGES, { encoding: "utf8" })
+    )
+  }
+
   /**
    * This method stop a container
    * @param {*} containerId is the container id
@@ -25,6 +31,16 @@ export default class Docker {
   static stopContainer(containerId) {
     return getDockerContainer(
       execSync(`${DOCKER_COMMAND.STOP} ${containerId}`, { encoding: "utf8" })
+    ); 
+  }
+
+  /**
+   * stop all container docker
+   * @returns all docker container stopped
+   */
+  static stopAllContainer() {
+    return getDockerContainer(
+      execSync(`${DOCKER_COMMAND.STOP_ALL}`, { encoding: "utf8" })
     ); 
   }
 

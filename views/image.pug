@@ -1,0 +1,22 @@
+html
+  head
+    script.
+      deleteAllDockerImage = function() {
+        fetch('image/', {
+          method: 'DELETE',
+        })
+        .then(_ => {
+         location.reload(); 
+        })
+      };
+  body
+  button(onclick=`deleteAllDockerImage()`) delete all
+  table(style='width:100%', border='1')
+    tr
+      each val in columns
+        th= val
+    for item in images
+      tr
+        td= item.id
+        td= item.name
+        td= item.tag

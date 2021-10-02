@@ -3,6 +3,8 @@ import dockerRoutes from './routes/docker.routes';
 
 const app = express();
 
+app.set('view engine', 'pug');
+
 const port = process.env.PORT || 8080;
 
 

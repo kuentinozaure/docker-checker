@@ -1,0 +1,55 @@
+html
+  head
+    script.
+      stopDockerContainer = function(dockerId) {
+        fetch('docker/' + dockerId, {
+          method: 'PUT',
+        })
+        .then(_ => {
+         location.reload(); 
+        })
+      };
+
+      deleteDockerContainer = function(dockerId) {
+        fetch('docker/' + dockerId, {
+          method: 'DELETE',
+        })
+        .then(_ => {
+         location.reload(); 
+        })
+      };
+
+      stopAllDockerContainer = function() {
+        fetch('docker/', {
+          method: 'PUT',
+        })
+        .then(_ => {
+         location.reload(); 
+        })
+      };
+
+      deleteAllDockerContainer = function() {
+        fetch('docker/', {
+          method: 'DELETE',
+        })
+        .then(_ => {
+         location.reload(); 
+        })
+      };
+  body
+  button(onclick=`stopAllDockerContainer()`) stop all
+  button(onclick=`deleteAllDockerContainer()`) delete all
+  table(style='width:100%', border='1')
+    tr
+      each val in columns
+        th= val
+    for item in dockers
+      tr
+        td= item.id
+        td= item.image
+        td= item.status
+        td
+          if item.status == 'Up' 
+            button(onclick=`stopDockerContainer('${item.id}')`) stop
+          if item.status == 'Exited' 
+            button(onclick=`deleteDockerContainer('${item.id}')`) delete

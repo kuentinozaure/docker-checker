@@ -1,11 +1,9 @@
 class DockerInfo {
 
-    constructor(id,status,image,created,dockerName) {
+    constructor(id,image,status) {
         this.id = id;
-        this.status = status;
         this.image = image;
-        this.created = created;
-        this.docker_name = dockerName;
+        this.status = status
     }
 
     getId() {
@@ -16,14 +14,6 @@ class DockerInfo {
         this.id = id;
     }
 
-    getStatus() {
-        return this.status;
-    }
-
-    setStatus(status) {
-        this.status = status;
-    }
-
     getImage() {
         return this.image;
     }
@@ -32,19 +22,12 @@ class DockerInfo {
         this.image = image;
     }
 
-    getCreated() {
-        return this.created;
-    }
-    setCreated(created) {
-        this.created = created;
+    getStatus() {
+        return this.status;
     }
 
-    getDockerName() {
-        return this.docker_name;
-    }
-
-    setDockerName(dockerName){
-        this.docker_name = dockerName;
+    setStatus(status) {
+        this.status = status;
     }
 }
 
